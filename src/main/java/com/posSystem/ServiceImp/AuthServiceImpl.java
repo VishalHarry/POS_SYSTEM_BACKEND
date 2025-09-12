@@ -75,7 +75,7 @@ public class AuthServiceImpl implements AuthService{
 		Authentication authentication=authenticate(email,password);
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		Collection<? extends GrantedAuthority> 	authorities=authentication.getAuthorities(); 
-		String role=authorities.iterator().next().getAuthority();
+//		String role=authorities.iterator().next().getAuthority();
 		String jwt=jwtProvider.generateToken(authentication);
 		User user=userRepo.findByEmail(email);
 		user.setLastLoginAt(LocalDateTime.now());
